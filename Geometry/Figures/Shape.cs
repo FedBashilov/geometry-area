@@ -1,4 +1,4 @@
-﻿namespace Geometry
+﻿namespace Geometry.Figures
 {
     public abstract class Shape
     {

@@ -5,13 +5,13 @@ namespace UnitTests.Figures
 	public class TriangleTests
     {
         [Theory]
-        [InlineData(-1, 1, 1, "Parameter must be positive. (Parameter 'a')\r\nActual value was -1.")]
-        [InlineData(1, -1, 1, "Parameter must be positive. (Parameter 'b')\r\nActual value was -1.")]
-        [InlineData(1, 1, -1, "Parameter must be positive. (Parameter 'c')\r\nActual value was -1.")]
-        [InlineData(0, 1, 1, "Parameter must be positive. (Parameter 'a')\r\nActual value was 0.")]
-        [InlineData(1, 0, 1, "Parameter must be positive. (Parameter 'b')\r\nActual value was 0.")]
-        [InlineData(1, 1, 0, "Parameter must be positive. (Parameter 'c')\r\nActual value was 0.")]
-        [InlineData(1, 2, 3, "The sum of two side lengths has to exceed the length of the third side.")]
+        [InlineData(-1d, 1d, 1d, "Parameter must be positive. (Parameter 'a')\r\nActual value was -1.")]
+        [InlineData(1d, -1d, 1d, "Parameter must be positive. (Parameter 'b')\r\nActual value was -1.")]
+        [InlineData(1d, 1d, -1d, "Parameter must be positive. (Parameter 'c')\r\nActual value was -1.")]
+        [InlineData(0d, 1d, 1d, "Parameter must be positive. (Parameter 'a')\r\nActual value was 0.")]
+        [InlineData(1d, 0d, 1d, "Parameter must be positive. (Parameter 'b')\r\nActual value was 0.")]
+        [InlineData(1d, 1d, 0d, "Parameter must be positive. (Parameter 'c')\r\nActual value was 0.")]
+        [InlineData(1d, 2d, 3d, "The sum of two side lengths has to exceed the length of the third side.")]
         public void Ctor_Should_Throw_ArgumentException(double a, double b, double c, string expectedMessage)
         {
             try
@@ -30,7 +30,7 @@ namespace UnitTests.Figures
         }
 
         [Theory]
-        [InlineData(2, 3, 4, 2.9047375096555625)]
+        [InlineData(2d, 3d, 4d, 2.9047375096555625)]
         public void GetArea_Should_Return_Triangle_Area(double a, double b, double c, double expectedArea)
         {
             //Arrange
@@ -44,7 +44,7 @@ namespace UnitTests.Figures
         }
 
         [Theory]
-        [InlineData(3, 4, 5)]
+        [InlineData(3d, 4d, 5d)]
         public void IsRightTriangle_Should_Return_True(double a, double b, double c)
         {
             //Arrange
@@ -58,7 +58,7 @@ namespace UnitTests.Figures
         }
 
         [Theory]
-        [InlineData(5, 6, 7)]
+        [InlineData(5d, 6d, 7d)]
         public void IsRightTriangle_Should_Return_False(double a, double b, double c)
         {
             //Arrange
