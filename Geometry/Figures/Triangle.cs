@@ -1,6 +1,6 @@
 ﻿namespace Geometry.Figures
 {
-    public class Triangle : IFigure
+    public class Triangle : Shape
     {
         public readonly double A;
 
@@ -25,7 +25,7 @@
                 this.C == Math.Sqrt(Math.Pow(this.A, 2) + Math.Pow(this.B, 2));
         }
 
-        public double GetArea()
+        public override double GetArea()
         {
             var semiPrmtr = (this.A + this.B + this.C) / 2;
 
