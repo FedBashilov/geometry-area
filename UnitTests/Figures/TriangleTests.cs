@@ -11,8 +11,10 @@ namespace UnitTests.Figures
         [InlineData(0d, 1d, 1d, "Parameter must be positive. (Parameter 'a')\r\nActual value was 0.")]
         [InlineData(1d, 0d, 1d, "Parameter must be positive. (Parameter 'b')\r\nActual value was 0.")]
         [InlineData(1d, 1d, 0d, "Parameter must be positive. (Parameter 'c')\r\nActual value was 0.")]
-        [InlineData(1d, 2d, 3d, "The sum of two side lengths has to exceed the length of the third side.")]
-        public void Ctor_Should_Throw_ArgumentException(double a, double b, double c, string expectedMessage)
+		[InlineData(1d, 2d, 3d, "The sum of two side lengths has to exceed the length of the third side.")]
+		[InlineData(2.000000000001, 2.000000000001, 4d, "The sum of two side lengths has to exceed the length of the third side.")]
+		[InlineData(2.0000000001, 2d, 4.00000000009, "The sum of two side lengths has to exceed the length of the third side.")]
+		public void Ctor_Should_Throw_ArgumentException(double a, double b, double c, string expectedMessage)
         {
             try
             {
@@ -31,7 +33,8 @@ namespace UnitTests.Figures
 
         [Theory]
         [InlineData(2d, 3d, 4d, 2.9047375096555625)]
-        public void GetArea_Should_Return_Triangle_Area(double a, double b, double c, double expectedArea)
+
+		public void GetArea_Should_Return_Triangle_Area(double a, double b, double c, double expectedArea)
         {
             //Arrange
             var triangle = new Triangle(a, b, c);

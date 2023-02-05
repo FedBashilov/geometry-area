@@ -17,11 +17,15 @@
 
         public bool IsRightTriangle()
         {
-			var sideSquares = new double[] { Math.Pow(this.A, 2), Math.Pow(this.B, 2), Math.Pow(this.C, 2) };
+			var sideSquares = new double[] { 
+                Math.Pow(this.A, 2), 
+                Math.Pow(this.B, 2), 
+                Math.Pow(this.C, 2) 
+            };
 
-			return Math.Abs(sideSquares[0] - (sideSquares[1] + sideSquares[2])) < double.Epsilon ||
-				   Math.Abs(sideSquares[1] - (sideSquares[0] + sideSquares[2])) < double.Epsilon ||
-				   Math.Abs(sideSquares[2] - (sideSquares[0] + sideSquares[1])) < double.Epsilon;
+			return sideSquares[0].EqualsApproximately(sideSquares[1] + sideSquares[2]) ||
+				   sideSquares[1].EqualsApproximately(sideSquares[0] + sideSquares[2]) ||
+				   sideSquares[2].EqualsApproximately(sideSquares[0] + sideSquares[1]);
 		}
 
         public override double GetArea()
@@ -39,7 +43,7 @@
             if (b <= 0) throw new ArgumentOutOfRangeException(nameof(b), b, "Parameter must be positive.");
             if (c <= 0) throw new ArgumentOutOfRangeException(nameof(c), c, "Parameter must be positive.");
 
-            if( !( a - b - c < double.Epsilon && b - a - c < double.Epsilon && c - a - b < double.Epsilon) )
+            if( !(a.CompareApproximately(b + c) == -1 && b.CompareApproximately(a + c) == -1 && c.CompareApproximately(a + b) == -1) )
             {
                 throw new Exception("The sum of two side lengths has to exceed the length of the third side.");
             }
