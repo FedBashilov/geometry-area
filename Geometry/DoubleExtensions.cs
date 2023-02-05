@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-namespace Geometry
+﻿namespace Geometry
 {
 	internal static class DoubleExtensions
 	{
@@ -18,10 +15,12 @@ namespace Geometry
 			{
 				return 0;
 			}
+
 			if (x - y < tolerance)
 			{
 				return -1;
 			}
+
 			return 1;
 		}
 	}
